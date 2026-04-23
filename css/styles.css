@@ -1,0 +1,204 @@
+/* ============================================================
+   Edume Learning — Shared Styles
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --teal-dark:  #085041;
+  --teal:       #0F6E56;
+  --teal-mid:   #1D9E75;
+  --teal-light: #5DCAA5;
+  --teal-pale:  #E1F5EE;
+  --amber:      #EF9F27;
+  --amber-dark: #BA7517;
+  --amber-pale: #FAEEDA;
+  --coral:      #D85A30;
+  --coral-pale: #FAECE7;
+  --off-white:  #FAFAF7;
+  --warm-white: #FFF9F4;
+  --ink:        #1A1A17;
+  --ink-muted:  #4A4A45;
+  --ink-faint:  #888780;
+  --border:     rgba(0,0,0,0.08);
+  --red:        #E24B4A;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0.55rem 1.3rem; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem; font-weight: 500;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s; border: none;
+}
+.btn-primary   { background: var(--teal);  color: white; }
+.btn-primary:hover   { background: var(--teal-dark); }
+.btn-secondary { background: white; color: var(--ink); border: 1.5px solid var(--border); }
+.btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+.btn-danger    { background: var(--red); color: white; }
+.btn-amber     { background: var(--amber); color: var(--ink); font-weight: 700; }
+.btn-amber:hover { background: var(--amber-dark); color: white; }
+.btn-lg  { padding: 0.75rem 1.75rem; font-size: 0.95rem; border-radius: 10px; }
+.btn-full { width: 100%; justify-content: center; }
+
+/* ---- Cards ---- */
+.card {
+  background: white; border-radius: 16px;
+  border: 1px solid var(--border); padding: 1.5rem;
+}
+.card-sm { padding: 1rem; border-radius: 12px; }
+
+/* ---- Form elements ---- */
+.form-group { margin-bottom: 1.25rem; }
+.form-label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--ink-muted); margin-bottom: 0.4rem; }
+.form-input {
+  width: 100%; padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: 'DM Sans'; font-size: 0.9rem; color: var(--ink);
+  background: white; transition: border-color 0.2s; outline: none;
+}
+.form-input:focus { border-color: var(--teal); }
+.form-select {
+  width: 100%; padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: 'DM Sans'; font-size: 0.9rem;
+  background: white; cursor: pointer;
+}
+.form-textarea {
+  width: 100%; padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: 'DM Sans'; font-size: 0.9rem;
+  resize: vertical; min-height: 100px;
+}
+.form-error { font-size: 0.78rem; color: var(--red); margin-top: 4px; }
+
+/* ---- Toast notifications ---- */
+#toast-container {
+  position: fixed; bottom: 24px; right: 24px;
+  display: flex; flex-direction: column; gap: 8px; z-index: 9999;
+}
+.toast {
+  background: white; border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  font-size: 0.85rem; display: flex; gap: 8px; align-items: center;
+  animation: slideIn 0.3s ease; max-width: 320px;
+}
+.toast.success { border-left: 3px solid var(--teal-mid); }
+.toast.error   { border-left: 3px solid var(--red); }
+.toast.info    { border-left: 3px solid var(--amber); }
+@keyframes slideIn {
+  from { opacity:0; transform: translateX(20px); }
+  to   { opacity:1; transform: translateX(0); }
+}
+
+/* ---- Badge ---- */
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 20px;
+  font-size: 0.72rem; font-weight: 600;
+}
+.badge-teal   { background: var(--teal-pale);  color: var(--teal); }
+.badge-amber  { background: var(--amber-pale); color: var(--amber-dark); }
+.badge-coral  { background: var(--coral-pale); color: var(--coral); }
+.badge-green  { background: #EAF3DE; color: #3B6D11; }
+.badge-red    { background: #FCEBEB; color: #A32D2D; }
+
+/* ---- Loading spinner ---- */
+.spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 3px solid var(--teal-pale);
+  border-top-color: var(--teal);
+  animation: spin 0.7s linear infinite;
+  margin: 2rem auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Shared Nav ---- */
+.app-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.app-nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 800; color: var(--teal);
+  text-decoration: none;
+}
+.app-nav-logo-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: var(--teal); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 800;
+}
+.app-nav-right { display: flex; align-items: center; gap: 0.75rem; }
+
+/* ---- Notif bell ---- */
+.notif-bell {
+  position: relative; cursor: pointer;
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); background: white; font-size: 1.05rem;
+  transition: background 0.2s;
+}
+.notif-bell:hover { background: var(--teal-pale); }
+.notif-count {
+  position: absolute; top: 2px; right: 2px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--red); color: white;
+  font-size: 0.6rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---- Avatar ---- */
+.avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--teal); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; font-weight: 700; flex-shrink: 0;
+  text-decoration: none;
+}
+
+/* ---- Page header ---- */
+.page-header {
+  background: white; border-bottom: 1px solid var(--border);
+  padding: 2rem 2rem 1.5rem;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem; font-weight: 700; color: var(--ink);
+}
+
+/* ---- Grid layouts ---- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+/* ---- Stat card ---- */
+.stat-card {
+  background: white; border-radius: 12px;
+  border: 1px solid var(--border); padding: 1.25rem;
+}
+.stat-card .s-label { font-size: 0.75rem; font-weight: 600; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.3rem; }
+.stat-card .s-val   { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--ink); line-height: 1; }
+.stat-card .s-sub   { font-size: 0.75rem; color: var(--ink-faint); margin-top: 4px; }
+.stat-card .s-icon  { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .app-nav { padding: 0 1rem; }
+}
